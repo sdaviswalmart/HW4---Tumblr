@@ -29,6 +29,7 @@
                                         <state key="selected" image="search_selected_icon"/>
                                         <connections>
                                             <action selector="didPressTab:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1cJ-na-oOj"/>
+                                            <action selector="didTapSearch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KRw-Zg-cWD"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JRS-bX-kif" userLabel="composeButton">
@@ -37,8 +38,8 @@
                                         <state key="normal" image="compose_button"/>
                                         <state key="selected" image="compose_button"/>
                                         <connections>
-                                            <action selector="didPressCompose:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7hN-Bj-1am"/>
-                                            <segue destination="kNP-PK-kL7" kind="modal" id="hts-Hx-k4u"/>
+                                            <action selector="onComposeTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4gN-CT-1Nb"/>
+                                            <segue destination="kNP-PK-kL7" kind="modal" id="o1e-tr-84j"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Trn-6l-vLN" userLabel="accountButton">
@@ -68,6 +69,10 @@
                                             <action selector="didPressTab:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0SM-Tr-DqT"/>
                                         </connections>
                                     </button>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="explore_popup" id="h1O-1W-4v1">
+                                        <rect key="frame" x="-2" y="-79" width="182" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" cyan="0.83880370855331421" magenta="0.54505228996276855" yellow="0.23154743721610621" black="0.22571890291414762" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                             </view>
@@ -76,6 +81,7 @@
                     </view>
                     <connections>
                         <outlet property="contentView" destination="PgK-TM-oQc" id="WWI-lM-Ufb"/>
+                        <outlet property="explorePopup" destination="h1O-1W-4v1" id="hG7-Rv-KmS"/>
                         <outletCollection property="buttons" destination="b4Z-0i-B2z" collectionClass="NSMutableArray" id="Eq6-Tv-vMe"/>
                         <outletCollection property="buttons" destination="qL5-s3-pCY" collectionClass="NSMutableArray" id="ym7-qf-PHp"/>
                         <outletCollection property="buttons" destination="Trn-6l-vLN" collectionClass="NSMutableArray" id="SAU-fh-vLh"/>
@@ -189,7 +195,6 @@
         <!--Compose View Controller-->
         <scene sceneID="FsV-Cy-slf">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SDN-cM-FvI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="composeView" id="kNP-PK-kL7" customClass="ComposeViewController" customModule="HW4___Tumblr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" alpha="0.69999999999999996" contentMode="scaleToFill" id="UdG-ai-Y4R" userLabel="Compose Overlay">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -240,14 +245,15 @@
                         <color key="backgroundColor" red="0.1176470667" green="0.4156863093" blue="0.61176472900000001" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <connections>
-                        <outletCollection property="circleButtons" destination="bCN-D6-7cI" collectionClass="NSMutableArray" id="nwc-o0-bWt"/>
-                        <outletCollection property="circleButtons" destination="2c0-MT-EtV" collectionClass="NSMutableArray" id="6bg-b7-32v"/>
-                        <outletCollection property="circleButtons" destination="zOf-ov-Iw1" collectionClass="NSMutableArray" id="DZK-Xt-Ehb"/>
-                        <outletCollection property="circleButtons" destination="fcw-T5-Wel" collectionClass="NSMutableArray" id="k9P-W6-eBY"/>
-                        <outletCollection property="circleButtons" destination="VTj-pw-bHF" collectionClass="NSMutableArray" id="TsM-LL-hA0"/>
-                        <outletCollection property="circleButtons" destination="Fc0-rA-jrg" collectionClass="NSMutableArray" id="9jz-a1-KwU"/>
+                        <outlet property="chatButton" destination="VTj-pw-bHF" id="nCh-nU-iSq"/>
+                        <outlet property="linkButton" destination="fcw-T5-Wel" id="PoG-Kq-YRz"/>
+                        <outlet property="photoButton" destination="2c0-MT-EtV" id="5WE-VO-Kja"/>
+                        <outlet property="quoteButton" destination="zOf-ov-Iw1" id="RDv-gk-RFR"/>
+                        <outlet property="textButton" destination="bCN-D6-7cI" id="bU3-nN-nAh"/>
+                        <outlet property="videoButton" destination="Fc0-rA-jrg" id="t3Q-3c-aIP"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SDN-cM-FvI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="928" y="1071"/>
         </scene>
@@ -308,6 +314,7 @@
         <image name="account_selected_icon" width="35" height="35"/>
         <image name="chat_icon" width="75" height="96"/>
         <image name="compose_button" width="50" height="35"/>
+        <image name="explore_popup" width="185" height="77"/>
         <image name="home" width="320" height="524"/>
         <image name="home_icon" width="35" height="35"/>
         <image name="home_overlay" width="320" height="100"/>

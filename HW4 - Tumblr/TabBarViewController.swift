@@ -9,31 +9,73 @@
 import UIKit
 
 class TabBarViewController: UIViewController {
-
+    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet var buttons: [UIButton]!
+    @IBOutlet weak var explorePopup: UIImageView!
     
     var homeViewController: UIViewController!
     var searchViewController: UIViewController!
     var accountViewController: UIViewController!
     var trendingViewController: UIViewController!
     
-
     
     var viewControllers: [UIViewController]!
     
     var selectedIndex: Int = 0
     
+    var fadeTransition: FadeTransition!
+    
+    @IBAction func didTapSearch(sender: UIButton) {
+        
+        // Optionally initialize the property to a desired starting value
+        self.explorePopup.alpha = 0
+        self.explorePopup.alpha = 1
+        UIView.animateWithDuration(0.4, animations: {
+            // This causes first view to fade in and second view to fade out
+            self.explorePopup.alpha = 1
+            self.explorePopup.alpha = 0
+        })
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("did call segue fade")
+        
+        // Access the ViewController that you will be transitioning too, a.k.a, the destinationViewController.
+        let destinationViewController = segue.destinationViewController
+        
+        // Set the modal presentation style of your destinationViewController to be custom.
+        destinationViewController.modalPresentationStyle = UIModalPresentationStyle.Custom
+        
+        // Create a new instance of your fadeTransition.
+        fadeTransition = FadeTransition()
+        
+        // Tell the destinationViewController's  transitioning delegate to look in fadeTransition for transition instructions.
+        destinationViewController.transitioningDelegate = fadeTransition
+        
+        // Adjust the transition duration. (seconds)
+        fadeTransition.duration = 0.5
+    }
+    
+    
+    
+    @IBAction func onComposeTap(sender: UIButton) {
+//        print("on tap")
+//
+//        
+//        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let userVC = mainStoryboard.instantiateViewControllerWithIdentifier("composeView") as! ComposeViewController
+//        presentViewController(userVC, animated: true, completion: nil)
+        
+    }
 
     
+    
+    
+    
+    
 
-    @IBAction func didPressCompose(sender: UIButton) {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let userVC = mainStoryboard.instantiateViewControllerWithIdentifier("composeView") as! ComposeViewController
-        presentViewController(userVC, animated: true, completion: nil)
-
-
-    }
+   
     
     @IBAction func didPressTab(sender: UIButton) {
         
@@ -81,8 +123,7 @@ class TabBarViewController: UIViewController {
 
     }
     
-
-
+   
     
     
     override func viewDidLoad() {

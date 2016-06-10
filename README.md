@@ -13,7 +13,7 @@ Time spent: `<15>`
 
 #### Optional
 
-- [ ] Compose screen is faded in while the buttons animate in.
+- [X] Compose screen is faded in while the buttons animate in.
 - [X] Login button should show animate the login form over the view controller.
 - [ ] Discover bubble should bob up and down unless the SearchViewController is tapped.
 
@@ -25,7 +25,7 @@ Time spent: `<15>`
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. 
+1. Bobble?
 2. 
 
 ### Video Walkthrough 

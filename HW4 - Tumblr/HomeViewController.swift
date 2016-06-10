@@ -11,26 +11,24 @@ import UIKit
 class HomeViewController: UIViewController {
     
     var fadeTransition: FadeTransition!
-
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         // Access the ViewController that you will be transitioning too, a.k.a, the destinationViewController.
-        // Access the ViewController that you will be transitioning too, a.k.a, the destinationViewController.
-        let LoginModalViewController = segue.destinationViewController
+        var destinationViewController = segue.destinationViewController
         
         // Set the modal presentation style of your destinationViewController to be custom.
-        LoginModalViewController.modalPresentationStyle = UIModalPresentationStyle.Custom
+        destinationViewController.modalPresentationStyle = UIModalPresentationStyle.Custom
         
         // Create a new instance of your fadeTransition.
         fadeTransition = FadeTransition()
         
         // Tell the destinationViewController's  transitioning delegate to look in fadeTransition for transition instructions.
-        LoginModalViewController.transitioningDelegate = fadeTransition
+        destinationViewController.transitioningDelegate = fadeTransition
         
         // Adjust the transition duration. (seconds)
         fadeTransition.duration = 1.0
-
-
     }
 
     override func viewDidLoad() {
