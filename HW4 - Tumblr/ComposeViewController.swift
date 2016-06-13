@@ -92,12 +92,12 @@ class ComposeViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         UIView.animateWithDuration(0.4, animations: {
-        self.textButton.transform = CGAffineTransformMakeTranslation(0,0)
-        self.photoButton.transform = CGAffineTransformMakeTranslation(0,0)
-        self.quoteButton.transform = CGAffineTransformMakeTranslation(0,0)
-        self.linkButton.transform = CGAffineTransformMakeTranslation(0,0)
-        self.chatButton.transform = CGAffineTransformMakeTranslation(0,0)
-        self.videoButton.transform = CGAffineTransformMakeTranslation(0,0)
+        self.textButton.transform = CGAffineTransformMakeTranslation(0,400)
+        self.photoButton.transform = CGAffineTransformMakeTranslation(0,400)
+        self.quoteButton.transform = CGAffineTransformMakeTranslation(0,400)
+        self.linkButton.transform = CGAffineTransformMakeTranslation(0,400)
+        self.chatButton.transform = CGAffineTransformMakeTranslation(0,400)
+        self.videoButton.transform = CGAffineTransformMakeTranslation(0,400)
             
         })
 
@@ -108,12 +108,12 @@ class ComposeViewController: UIViewController {
         
         UIView.animateWithDuration(0.4, animations: {
 
-        self.textButton.transform = CGAffineTransformMakeTranslation(0,-400)
-        self.photoButton.transform = CGAffineTransformMakeTranslation(0,-400)
-        self.quoteButton.transform = CGAffineTransformMakeTranslation(0,-400)
-        self.linkButton.transform = CGAffineTransformMakeTranslation(0,-400)
-        self.chatButton.transform = CGAffineTransformMakeTranslation(0,-400)
-        self.videoButton.transform = CGAffineTransformMakeTranslation(0,-400)
+        self.textButton.transform = CGAffineTransformMakeTranslation(0,0)
+        self.photoButton.transform = CGAffineTransformMakeTranslation(0,0)
+        self.quoteButton.transform = CGAffineTransformMakeTranslation(0,0)
+        self.linkButton.transform = CGAffineTransformMakeTranslation(0,0)
+        self.chatButton.transform = CGAffineTransformMakeTranslation(0,0)
+        self.videoButton.transform = CGAffineTransformMakeTranslation(0,0)
         })
 
     }

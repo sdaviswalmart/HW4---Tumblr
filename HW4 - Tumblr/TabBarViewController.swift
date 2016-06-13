@@ -31,7 +31,7 @@ class TabBarViewController: UIViewController {
         // Optionally initialize the property to a desired starting value
         self.explorePopup.alpha = 0
         self.explorePopup.alpha = 1
-        UIView.animateWithDuration(0.4, animations: {
+        UIView.animateWithDuration(2, animations: {
             // This causes first view to fade in and second view to fade out
             self.explorePopup.alpha = 1
             self.explorePopup.alpha = 0
@@ -57,8 +57,31 @@ class TabBarViewController: UIViewController {
         fadeTransition.duration = 0.5
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     
     
+    UIView.animateWithDuration(2, delay: 0, options: .Repeat, animations: { () -> Void in
+    self.explorePopup.transform = CGAffineTransformMakeTranslation(0,10)
+    }, completion: { (value: Bool) in
+        UIView.animateWithDuration(4, animations: {
+   self.explorePopup.transform = CGAffineTransformMakeTranslation(0,0)
+            }
+        )
+    })
+}
+    
+   
+
+
+
+
+
     @IBAction func onComposeTap(sender: UIButton) {
 //        print("on tap")
 //
