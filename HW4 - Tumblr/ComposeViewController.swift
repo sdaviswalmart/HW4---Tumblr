@@ -23,8 +23,11 @@ class ComposeViewController: UIViewController {
   
     
     @IBAction func dismissModal(sender: UIButton) {
-        dismissViewControllerAnimated(false, completion: nil)
         
+    UIView.animateWithDuration(0.4,animations: {
+    self.dismissViewControllerAnimated(true, completion: nil)
+
+    })
     }
     
   
